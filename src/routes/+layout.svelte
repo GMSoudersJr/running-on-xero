@@ -27,7 +27,7 @@
   </main>
 
   <aside>
-    <h2>More posts</h2>
+    <h2>Recent posts</h2>
     <ul>
       {#each data.posts as post}
         <li>
@@ -79,21 +79,19 @@
 
   @media screen and (min-width: 40em) {
     .layout-container {
-      grid-template-columns: 1fr max-content;
+      grid-template-columns: 1fr 3fr 1fr;
       grid-template-rows: 60px 1fr min-content;
       gap: 1em;
       padding-left: 1em;
       padding-right: 1em;
       grid-template-areas:
-      "nav nav"
-      "main aside "
-      "footer footer";
+      "nav nav nav"
+      ". main aside "
+      "footer footer footer";
     }
-    main {
+    main, aside {
       place-self: start;
-    }
-    aside {
-      place-self: center;
+      justify-self: center;
     }
   }
 

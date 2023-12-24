@@ -67,6 +67,7 @@
 
 <style>
   ul {
+    background-color: var(--whiteStripe);
     position: fixed;
     top: 0;
     left:0;
@@ -111,18 +112,20 @@
 
   @media screen and (max-width: 80em) {
     ul {
+      background-color: var(--whiteStripe);
       background-color: red;
     }
   }
   @media screen and (max-width: 64em) {
     ul {
+      background-color: var(--whiteStripe);
       background-color: white;
     }
   }
   @media screen and (max-width: 48em) {
     ul {
       width: 100vw;
-      background-color: blue;
+      background-color: var(--whiteStripe);
     }
 
     .nav-right {
