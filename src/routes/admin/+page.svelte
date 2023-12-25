@@ -1,25 +1,64 @@
 <script>
 </script>
 
-<form action="login">
+<form
+  method="post"
+  action="?/addPost"
+>
+  <h1>Add a Post</h1>
   <label
-    for="admin"
+    for="title"
   >
-    Admin:
+    Title:
     <input
-      type="username"
-      name="username"
-      id="username"
+      type="text"
+      name="title"
+      id="title"
     >
   </label>
+
   <label
-    for="password"
+    for="content"
   >
-    Password:
+    Content:
+    <textarea
+      name="content"
+      id="content"
+      rows="10"
+    >
+    </textarea>
+  </label>
+
+  <label
+    for="imageUrl"
+  >
+    Image url:
+    <input
+      type="url"
+      name="imageUrl"
+      id="imageUrl"
+    >
+  </label>
+
+  <label
+    for="slug"
+  >
+    Slug:
+    <input
+      type="text"
+      name="slug"
+      id="slug"
+    >
+  </label>
+
+  <label
+    for="passphrase"
+  >
+    Passphrase:
     <input
       type="password"
-      name="password"
-      id="password"
+      name="passphrase"
+      id="passphrase"
     >
   </label>
 
@@ -31,21 +70,28 @@
 </form>
 
 <style>
+  h1 {
+    text-align: center;
+  }
   label {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
   }
   form {
+    width: 90svw;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
     row-gap: 0.5em;
   }
-  input[type=username],
+  input[type=text],
+  input[type=url],
   input[type=password],
-  input[type=submit] {
+  input[type=submit],
+  textarea {
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 4px 0;
   }
+
 </style>

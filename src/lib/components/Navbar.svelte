@@ -24,8 +24,6 @@
   ];
 
   function handleClick(event: MouseEvent) {
-    //let clicked = event?.target?.id;
-    console.log(event.target);
     let clicked = event?.target?.id;
     let navItem = document.getElementById(clicked)?.parentElement;
     let allNavItemsNew = document.querySelectorAll(".navItem")
@@ -103,7 +101,7 @@
   }
 
   .active > a {
-    color: silver;
+    color: var(--darkYellow);
   }
 
   ul .hamburger {

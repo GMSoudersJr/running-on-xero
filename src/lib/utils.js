@@ -127,3 +127,18 @@ export function convertStringToFlagEmojiCode(countryCode) {
 export function sorter(someCountry, anotherCountry) {
 	return anotherCountry.visits - someCountry.visits;
 }
+
+/**
+ * @param {string} slug
+ *
+ */
+export function hyphenateSlug(slug) {
+	let hyphentatedSlug = "";
+	if ( slug.includes(" ") ) {
+		hyphentatedSlug = slug.trim().toLowerCase().split(" ").join("-");
+	} else {
+		hyphentatedSlug = slug.trim().toLowerCase();
+	}
+
+	return hyphentatedSlug;
+}
