@@ -10,7 +10,7 @@
 
 <style>
   img {
-    width: 90%;
+    width: 100%;
   }
   .page-container {
     text-align: center;

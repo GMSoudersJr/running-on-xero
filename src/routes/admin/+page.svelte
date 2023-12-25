@@ -25,8 +25,7 @@
       name="content"
       id="content"
       rows="10"
-    >
-    </textarea>
+    ></textarea>
   </label>
 
   <label

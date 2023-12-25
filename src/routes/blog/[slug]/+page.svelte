@@ -3,8 +3,10 @@
   import { page } from '$app/stores';
 
   export let data: PageData;
+
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
-  $: next = data.posts?.at(index - 1);
+  console.log(data.posts?.findIndex(post => post.slug == $page.params.slug));
+  $: next = data.posts?.at(index + 1);
 
 </script>
 
