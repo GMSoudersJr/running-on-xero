@@ -1,11 +1,11 @@
 <script lang="ts">
   import BlogCard from "$lib/components/BlogCard.svelte";
-import type { PageData } from "../$types";
+  import type { PageData } from "../$types";
 
   export let data: PageData;
 </script>
 
-<h1>Running on Xero</h1>
+<h1 class="title">Running on Xero</h1>
 {#await data.posts}
   Loading posts...
 {:then posts}
@@ -24,10 +24,13 @@ import type { PageData } from "../$types";
 {/await}
 
 <style>
+  .title {
+    text-align: center;
+  }
   .cards-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto-fill;
+    grid-template-rows: auto;
     gap: 4px;
   }
 </style>
