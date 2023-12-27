@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ViewTransition from './navigation.svelte';
 	import Footer from "$lib/components/Footer.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
   import '../app.css';
@@ -18,6 +19,7 @@
   export let data: LayoutData;
 </script>
 <div class="layout-container">
+  <ViewTransition />
   <nav>
     <Navbar />
   </nav>
