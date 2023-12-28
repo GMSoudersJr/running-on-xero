@@ -24,7 +24,7 @@
     <textarea
       name="content"
       id="content"
-      rows="10"
+      rows="7"
     ></textarea>
   </label>
 
@@ -40,6 +40,17 @@
   </label>
 
   <label
+    for="imageAlt"
+  >
+    Image alt:
+    <input
+      type="url"
+      name="imageAlt"
+      id="imageAlt"
+    >
+  </label>
+
+  <label
     for="slug"
   >
     Slug:
@@ -47,6 +58,17 @@
       type="text"
       name="slug"
       id="slug"
+    >
+  </label>
+
+  <label
+    for="description"
+  >
+    Description:
+    <input
+      type="text"
+      name="description"
+      id="description"
     >
   </label>
 

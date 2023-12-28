@@ -27,7 +27,7 @@ export async function addPost(post: object) {
 
 export async function getAllPostsFromDatabase() {
 	const options = {
-		projection: { _id: 0, title: 1, content: 1, slug: 1, imageUrl: 1  }
+		projection: { _id: 0, title: 1, slug: 1, imageUrl: 1, imageAlt: 1  }
 	}
 	try {
 		await client.connect();
@@ -43,7 +43,15 @@ export async function getAllPostsFromDatabase() {
 
 export async function getPost(slug: string) {
 	const options = {
-		projection: { _id: 0, title: 1, content: 1, slug: 1, imageUrl: 1 }
+		projection: {
+			_id: 0,
+			title: 1,
+			content: 1,
+			slug: 1,
+			imageUrl: 1,
+			imageAlt: 1 ,
+			description: 1
+		}
 	}
 	try {
 		await client.connect();

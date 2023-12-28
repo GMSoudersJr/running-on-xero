@@ -15,7 +15,7 @@
       title={post.title}
       imageUrl={post.imageUrl}
       slug={post.slug}
-      alt={post.alt}
+      alt={post.imageAlt}
     />
   {/each}
 </section>

@@ -15,7 +15,7 @@
 {:then post}
   <section>
     <h1 class="title">{post?.title}</h1>
-    <img class="image" src={post?.imageUrl} alt={post?.alt}>
+    <img class="image" src={post?.imageUrl} alt={post?.imageAlt}>
     <div class="content">{@html post?.content}</div>
   </section>
 {:catch error}
@@ -38,5 +38,9 @@
   }
   .title, .content {
     padding: 0 1rem;
+  }
+  .content {
+    font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
+    line-height: 1.5;
   }
 </style>

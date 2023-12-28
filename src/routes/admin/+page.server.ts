@@ -10,7 +10,9 @@ export const actions = {
 		const title = postData.get('title')?.toString();
 		const content = postData.get('content')?.toString();
 		const imageUrl = postData.get('imageUrl')?.toString();
+		const imageAlt = postData.get('imageAlt')?.toString();
 		const slug = postData.get('slug')?.toString();
+		const description = postData.get('description')?.toString();
 		const passphrase = postData.get('passphrase')?.toString();
 
 		if (!slug) {
@@ -31,7 +33,9 @@ export const actions = {
 			title,
 			content,
 			imageUrl,
-			slug: formattedSlug
+			imageAlt,
+			slug: formattedSlug,
+			description
 		}
 
 		const addedPost = await addPost(post);

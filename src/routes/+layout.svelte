@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { navigating } from '$app/stores';
   import ViewTransition from './navigation.svelte';
 	import Footer from "$lib/components/Footer.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
@@ -26,6 +27,9 @@
 
   <main>
     <slot />
+    {#if $navigating}
+      <p>Loading...</p>
+    {/if}
   </main>
 
   <aside>
@@ -47,6 +51,9 @@
 </div>
 
 <style>
+  a {
+    font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
+  }
   .layout-container {
     background-color: var(--whiteStripe);
     width: 100%;
@@ -68,7 +75,8 @@
   }
   aside {
     grid-area: aside;
-    place-self: bottom;
+    align-self: end;
+    padding-left: 1em;
   }
   main {
     place-self: center;

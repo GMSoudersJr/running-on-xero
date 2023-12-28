@@ -64,6 +64,9 @@
 </nav>
 
 <style>
+  a {
+    font-family: 'Outfit', sans-serif;
+  }
   ul {
     background-color: var(--whiteStripe);
     position: fixed;

@@ -7,6 +7,12 @@
   --brightYellow: #dba831;
   --darkYellow: #b08425;
 }
+h1, h2, p {
+  font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
+}
+h1, h2 {
+  letter-spacing: -1.2px;
+}
 /* For Mobile Phones */
 [class*="col-"] {
   width: 100%;
