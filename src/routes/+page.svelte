@@ -1,5 +1,5 @@
 <script lang="ts">
-
+  // TODO - add a carousel
 </script>
 
 <div class="page-container">

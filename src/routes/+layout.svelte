@@ -4,6 +4,7 @@
 	import Footer from "$lib/components/Footer.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
   import '../app.css';
+	import LoadingWidget from '$lib/components/LoadingWidget.svelte';
 
   interface LayoutData {
     bannerPhoto: {
@@ -28,7 +29,7 @@
   <main>
     <slot />
     {#if $navigating}
-      <p>Loading...</p>
+      <LoadingWidget />
     {/if}
   </main>
 
@@ -53,6 +54,11 @@
 <style>
   a {
     font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
+    text-decoration: none;
+    color: var(--darkYellow);
+  }
+  aside {
+    color: var(--charcoalGray);
   }
   .layout-container {
     background-color: var(--whiteStripe);

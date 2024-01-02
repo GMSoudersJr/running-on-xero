@@ -5,7 +5,6 @@
   export let data: PageData;
 
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
-  console.log(data.posts?.findIndex(post => post.slug == $page.params.slug));
   $: next = data.posts?.at(index + 1);
 
 </script>
@@ -23,10 +22,24 @@
 {/await}
 
 {#if next}
-  <p>Next post: <a href="/blog/{next.slug}">{next.title}</a></p>
+  <div class="next-post">
+    <p>Next post:
+      <a href="/blog/{next.slug}">
+        {next.title}
+      </a>
+    </p>
+  </div>
 {/if}
 
 <style>
+  .next-post {
+    padding: 1em;
+    color: var(--charcoalGray);
+  }
+  .next-post p a {
+    color: var(--darkYellow);
+    text-decoration: none;
+  }
   img {
     width: 100%;
   }
