@@ -35,6 +35,15 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@splidejs/splide": "^4.1.4",
+		"@splidejs/svelte-splide": "^0.2.9",
 		"mongodb": "^6.3.0"
+	},
+	"files": ["dist"],
+	"svelte": "dist/index.js",
+	"exports": {
+		".": {
+			"svelte": "./dist/index.js"
+		}
 	}
 }
