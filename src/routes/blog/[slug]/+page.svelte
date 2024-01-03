@@ -16,14 +16,13 @@
     }
   }
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
+  $: post = data.posts?.at(index);
   $: previous = data.posts?.at(index - 1);
   $: next = data.posts?.at(index + 1);
 
 </script>
 
-{#await data.post}
-  Loading post...
-{:then post}
+{#if post}
   <BlogPost
     title={post.title}
     imageUrl={post.imageUrl}
@@ -31,6 +30,4 @@
     content={post.content}
     on:swipe={handleSwipe}
   />
-{:catch error}
-  <p>error loading the post: {error.message}</p>
-{/await}
+{/if}

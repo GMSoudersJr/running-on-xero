@@ -1,12 +1,10 @@
 <script lang="ts">
 	import {goto} from "$app/navigation";
 
-
-
-async function handleClick(event: MouseEvent) {
-  const image = event.target as HTMLImageElement;
-  await goto(`blog/${image.id}`, {invalidateAll: true});
-}
+  async function handleClick(event: MouseEvent) {
+    const image = event.target as HTMLImageElement;
+    await goto(`blog/${image.id}`);
+  }
 
   export let imageUrl: string;
   export let title: string;

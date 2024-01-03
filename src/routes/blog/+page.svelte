@@ -3,13 +3,11 @@
   import type { PageData } from "../$types";
 
   export let data: PageData;
+  $: ({ posts } = data);
 </script>
 
 <h1 class="title">Running on Xero</h1>
-{#await data.posts}
-  Loading posts...
-{:then posts}
-  <section class="cards-grid-container">
+<section class="cards-grid-container">
   {#each posts as post }
     <BlogCard
       title={post.title}
@@ -19,9 +17,6 @@
     />
   {/each}
 </section>
-{:catch error}
-  <p>error loading the posts: {error.message}</p>
-{/await}
 
 <style>
   .title {

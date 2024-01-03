@@ -11,6 +11,9 @@
       title: string;
       content: string;
       slug: string;
+      imageUrl: string;
+      imageAlt: string;
+      descriptiong: string;
     }[]
   }
   export let data: LayoutData;
