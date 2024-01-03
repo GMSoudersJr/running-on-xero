@@ -61,7 +61,6 @@
     color: var(--charcoalGray);
   }
   .layout-container {
-    background-color: var(--whiteStripe);
     width: 100%;
     height: calc(100svh);
     display: grid;

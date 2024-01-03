@@ -29,8 +29,13 @@
   aria-label="Intro Carousel"
   options={{
     rewind: true,
-    width: '100vw',
-    trimSpace: true,
+    arrows: false,
+    autoplay: true,
+    pauseOnHover: true,
+    pagination: false,
+    rewindByDrag: true,
+    gap: 4,
+    interval: 3000
   }}
 >
   {#each carouselImages as image}
@@ -43,7 +48,9 @@
 <style>
   img {
     width: 100%;
-    max-height: 35vh;
+    max-height: 35dvh;
     object-fit: cover;
+    align-self: center;
+    justify-content: center;
   }
 </style>

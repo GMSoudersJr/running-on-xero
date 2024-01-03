@@ -71,7 +71,6 @@
     font-family: 'Outfit', sans-serif;
   }
   ul {
-    background-color: var(--whiteStripe);
     position: fixed;
     top: 0;
     left:0;
@@ -103,7 +102,7 @@
   }
 
   li a:hover {
-    color: white;
+    color: var(--whiteStripe);
   }
 
   .active > a {
@@ -116,20 +115,17 @@
 
   @media screen and (max-width: 80em) {
     ul {
-      background-color: var(--whiteStripe);
       background-color: red;
     }
   }
   @media screen and (max-width: 64em) {
     ul {
-      background-color: var(--whiteStripe);
       background-color: white;
     }
   }
   @media screen and (max-width: 48em) {
     ul {
       width: 100vw;
-      background-color: var(--whiteStripe);
     }
 
     .nav-right {
@@ -157,7 +153,6 @@
   @media screen and (max-width: 40em) {
     ul {
       width: 100vw;
-      background-color: var(--whiteStripe);
     }
   }
 </style>
