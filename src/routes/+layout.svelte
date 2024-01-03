@@ -7,11 +7,6 @@
 	import LoadingWidget from '$lib/components/LoadingWidget.svelte';
 
   interface LayoutData {
-    bannerPhoto: {
-      imgUrl: string;
-      alt: string;
-      id: string;
-    }
     posts: {
       title: string;
       content: string;
@@ -27,9 +22,10 @@
   </nav>
 
   <main>
-    <slot />
     {#if $navigating}
       <LoadingWidget />
+    {:else}
+      <slot />
     {/if}
   </main>
 
@@ -57,9 +53,6 @@
     text-decoration: none;
     color: var(--darkYellow);
   }
-  aside {
-    color: var(--charcoalGray);
-  }
   .layout-container {
     width: 100%;
     height: calc(100svh);
@@ -79,9 +72,11 @@
     grid-area: nav;
   }
   aside {
+    color: var(--charcoalGray);
     grid-area: aside;
     align-self: end;
     padding-left: 1em;
+    padding-bottom: 1em;
   }
   main {
     place-self: center;

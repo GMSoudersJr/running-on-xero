@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import '@splidejs/svelte-splide/css';
   const carouselImages = [
@@ -23,6 +23,8 @@
       imageAlt: "image 6"
     },
   ];
+
+  export let posts;
 </script>
 
 <Splide
@@ -32,15 +34,18 @@
     arrows: false,
     autoplay: true,
     pauseOnHover: true,
+    updateOnMove: true,
     pagination: false,
     rewindByDrag: true,
     gap: 4,
     interval: 3000
   }}
 >
-  {#each carouselImages as image}
+  {#each posts as post}
   <SplideSlide>
-    <img src={image.imageUrl} alt={image.imageAlt}/>
+    <a href={`/blog/${post.slug}`}>
+      <img src={post.imageUrl} alt={post.title}/>
+    </a>
   </SplideSlide>
   {/each}
 </Splide>

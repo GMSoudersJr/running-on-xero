@@ -1,10 +1,22 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { page } from '$app/stores';
+	import BlogPost from "$lib/components/BlogPost.svelte";
+	import {goto} from "$app/navigation";
 
   export let data: PageData;
 
+  async function handleSwipe(event: CustomEvent) {
+    const swipeDirection = event.detail;
+    if ( swipeDirection === 'next' && next ) {
+      await goto(`/blog/${next.slug}`)
+    }
+    if ( swipeDirection === 'prev' && previous && index > 0) {
+      await goto(`/blog/${previous.slug}`)
+    }
+  }
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
+  $: previous = data.posts?.at(index - 1);
   $: next = data.posts?.at(index + 1);
 
 </script>
@@ -12,48 +24,13 @@
 {#await data.post}
   Loading post...
 {:then post}
-  <section>
-    <h1 class="title">{post?.title}</h1>
-    <img class="image" src={post?.imageUrl} alt={post?.imageAlt}>
-    <div class="content">{@html post?.content}</div>
-  </section>
+  <BlogPost
+    title={post.title}
+    imageUrl={post.imageUrl}
+    imageAlt={post.imageAlt}
+    content={post.content}
+    on:swipe={handleSwipe}
+  />
 {:catch error}
   <p>error loading the post: {error.message}</p>
 {/await}
-
-{#if next}
-  <div class="next-post">
-    <p>Next post:
-      <a href="/blog/{next.slug}">
-        {next.title}
-      </a>
-    </p>
-  </div>
-{/if}
-
-<style>
-  .next-post {
-    padding: 1em;
-    color: var(--charcoalGray);
-  }
-  .next-post p a {
-    color: var(--darkYellow);
-    text-decoration: none;
-  }
-  img {
-    width: 100%;
-  }
-  section {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows:  repeat(2, min-content);
-    gap: 0.5rem;
-  }
-  .title, .content {
-    padding: 0 1rem;
-  }
-  .content {
-    font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
-    line-height: 1.5;
-  }
-</style>
