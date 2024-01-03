@@ -64,6 +64,9 @@
 </nav>
 
 <style>
+  nav {
+    z-index: 1;
+  }
   a {
     font-family: 'Outfit', sans-serif;
   }

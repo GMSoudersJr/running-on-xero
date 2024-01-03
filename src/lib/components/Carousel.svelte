@@ -11,7 +11,7 @@
       imageAlt: "image 2"
     },
     {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV87F60DUxPm_Y_ksXrhGodUhc4UcYQQR5FNVwe2nBNJ2vq7LNdiUS-Uf60bfPZzMFT9rhLuR0pS2LxoOrX6uOTtHRO-qCwG1bGWK86Va9NH4-02g6X3ROs1Xp1bDHKOzLOGKO6BodWgx0eHv-_EKbjGpOg=w531-h979-s-no-gm?authuser=0",
+      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV86BqgrrnKWpXPv0amwcVKfU04Ch-znp7fvER5VpPzqNqcqeWwImeAGIp7g46nsFK8MzUpWu5NkDlXIuit5qOotjlzunH-EqI3eoqs57q12Pw3ZTiW7QQtNlv-_al92vCRR5W1SPOcWVOsAydp2hdRIs4w=w643-h366-s-no-gm?authuser=0",
       imageAlt: "image 3"
     },
     {
@@ -19,11 +19,7 @@
       imageAlt: "image 4"
     },
     {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV87shZIbaNmhjj6SBEDVUX9iInUIT_2I0WOVmQcJVsWTopGOgjaEmYWBOB4yLZbWaEZdnvIVzvJsKGvsXE4HZyNC_OIOpt5xt662EsKD9oSKvy__xRQvzbChwqfUTl4O5GBb2MTasJ-FpCFF8IZyntO-qQ=w960-h540-s-no-gm?authuser=0",
-      imageAlt: "image 5"
-    },
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV86cNXWEIGqghsQmLUp1Gi0Yihhm7PzMwkJA7rOa9eAydLIdVPY_nfMe1TK5p-V15vfMsevNxngr01Z8TIKL1TAEexERxQNylXfbrhI6NvFu3j2eJ1n8PdCc5WXR_YT2CHsBShQgTvJ8v5CrLugYBgoIow=w965-h626-s-no-gm?authuser=0",
+      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV84qAT0yZK_P29hHNdbMSXM4LPVAFoLvoS6eShGQBHQx13wBR6Td4W0XtE4c9lxE4QH_0SPu4rhaH3KIw9C3mRO4pLA0k2juLtlxvbp3uoeTfDmYjI88w-54H6lwOYDdLkHg3Cf_o8t0o68wVsm4eD8WHA=w959-h958-s-no-gm?authuser=0",
       imageAlt: "image 6"
     },
   ];
@@ -46,6 +42,8 @@
 
 <style>
   img {
-    width: 100%
+    width: 100%;
+    max-height: 35vh;
+    object-fit: cover;
   }
 </style>
