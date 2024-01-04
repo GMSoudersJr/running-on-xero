@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { navigating } from '$app/stores';
   import ViewTransition from './navigation.svelte';
 	import Footer from "$lib/components/Footer.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
   import '../app.css';
-	import LoadingWidget from '$lib/components/LoadingWidget.svelte';
+  import { page } from '$app/stores';
 
   interface LayoutData {
     posts: {
@@ -16,7 +15,9 @@
       descriptiong: string;
     }[]
   }
+
   export let data: LayoutData;
+  $: currentSlug = $page.params?.slug;
 </script>
 <div class="layout-container">
   <ViewTransition />
@@ -25,22 +26,26 @@
   </nav>
 
   <main>
-    {#if $navigating}
-      <LoadingWidget />
-    {:else}
-      <slot />
-    {/if}
+    <slot />
   </main>
 
   <aside>
     <h2>Recent posts</h2>
     <ul>
       {#each data.posts as post}
+        {#if post.slug === currentSlug}
+        <li class="current">
+          <a href="/blog/{post.slug}">
+            {post.title}
+          </a>
+        </li>
+      {:else}
         <li>
           <a href="/blog/{post.slug}">
             {post.title}
           </a>
         </li>
+        {/if}
       {/each}
     </ul>
   </aside>
@@ -51,6 +56,9 @@
 </div>
 
 <style>
+  li.current a {
+    color: var(--shortsColor);
+  }
   a {
     font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
     text-decoration: none;
