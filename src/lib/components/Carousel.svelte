@@ -1,4 +1,6 @@
 <script lang="ts">
+	import {goto} from '$app/navigation';
+
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import '@splidejs/svelte-splide/css';
   const carouselImages = [
@@ -23,6 +25,12 @@
       imageAlt: "image 6"
     },
   ];
+  async function handleClick(event: MouseEvent) {
+    const slideIndex = event.detail.Slide.index;
+    const blogSlug = posts.at(slideIndex).slug;
+    await goto(`/blog/${blogSlug}`);
+
+  }
 
   export let posts;
 </script>
@@ -33,29 +41,26 @@
     rewind: true,
     arrows: false,
     autoplay: true,
+    cover: true,
+    heightRatio: 0.618,
     pauseOnHover: true,
     updateOnMove: true,
     pagination: false,
     rewindByDrag: true,
     gap: 4,
-    interval: 3000
+    interval: 3500
   }}
+  on:click={handleClick}
 >
   {#each posts as post}
   <SplideSlide>
-    <a href={`/blog/${post.slug}`}>
-      <img src={post.imageUrl} alt={post.title}/>
-    </a>
+    <img src={post.imageUrl} alt={post.title}/>
   </SplideSlide>
   {/each}
 </Splide>
 
 <style>
   img {
-    width: 100%;
-    max-height: 35dvh;
-    object-fit: cover;
-    align-self: center;
-    justify-content: center;
+    width: 100%
   }
 </style>

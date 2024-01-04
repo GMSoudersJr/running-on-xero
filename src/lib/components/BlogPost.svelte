@@ -76,6 +76,9 @@
     grid-template-rows:  repeat(2, min-content);
     gap: 0.5rem;
   }
+  .title {
+    view-transition-name: blog-post-title;
+  }
   .title, .content {
     padding: 0 1rem;
   }

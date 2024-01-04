@@ -17,6 +17,6 @@
   .page-container {
     text-align: center;
     height: 100%;
-    width: 100%;
+    width: 100vw;
   }
 </style>

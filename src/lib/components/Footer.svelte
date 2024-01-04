@@ -14,6 +14,7 @@
     width: 100%;
     text-align: center;
     padding: 3px;
+    view-transition-name: footer;
   }
 
   footer p {

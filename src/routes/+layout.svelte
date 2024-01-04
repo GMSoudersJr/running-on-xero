@@ -88,6 +88,7 @@
     align-self: end;
     padding-left: 1em;
     padding-bottom: 1em;
+    view-transition-name: aside-recent-posts;
   }
   main {
     place-self: center;
