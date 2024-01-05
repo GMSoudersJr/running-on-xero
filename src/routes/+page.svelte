@@ -19,4 +19,10 @@
     height: 100%;
     width: 100vw;
   }
+
+  @media screen and (min-width: 40em) {
+    .page-container {
+      width: 600px;
+    }
+  }
 </style>

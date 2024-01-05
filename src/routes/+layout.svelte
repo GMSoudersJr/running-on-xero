@@ -99,7 +99,7 @@
     justify-content: end;
   }
 
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 48em) {
     .layout-container {
       grid-template-columns: 1fr 3fr 1fr;
       grid-template-rows: 60px 1fr min-content;

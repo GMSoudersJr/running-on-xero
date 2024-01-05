@@ -38,19 +38,20 @@
 <Splide
   aria-label="Intro Carousel"
   options={{
-    rewind: true,
-    speed: 1000,
     arrows: false,
     autoplay: true,
     cover: true,
-    heightRatio: 0.618,
-    pauseOnHover: true,
-    updateOnMove: true,
-    pagination: false,
-    rewindByDrag: true,
-    gap: 4,
-    interval: 3500,
     easing: "cubic-bezier(0, 0.3, 0.7, 1)",
+    gap: 4,
+    heightRatio: 0.618,
+    interval: 3500,
+    pagination: false,
+    pauseOnHover: true,
+    rewind: true,
+    rewindByDrag: true,
+    speed: 1000,
+    type: 'fade',
+    updateOnMove: true,
     waitForTransition: true,
   }}
   on:click={handleClick}

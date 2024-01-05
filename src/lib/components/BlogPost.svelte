@@ -69,6 +69,8 @@
 <style>
   img {
     width: 100%;
+    aspect-ratio: 1.618 / 1;
+    object-fit: cover;
   }
   section {
     display: grid;

@@ -22,6 +22,7 @@
 
 </script>
 
+<div class="page-container">
 {#if post}
   <BlogPost
     title={post.title}
@@ -31,3 +32,12 @@
     on:swipe={handleSwipe}
   />
 {/if}
+</div>
+
+<style>
+  @media screen and (min-width: 40em) {
+    .page-container {
+      width: 600px;
+    }
+  }
+</style>
