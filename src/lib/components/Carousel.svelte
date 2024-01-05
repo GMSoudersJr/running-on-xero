@@ -39,6 +39,7 @@
   aria-label="Intro Carousel"
   options={{
     rewind: true,
+    speed: 1000,
     arrows: false,
     autoplay: true,
     cover: true,
@@ -48,7 +49,9 @@
     pagination: false,
     rewindByDrag: true,
     gap: 4,
-    interval: 3500
+    interval: 3500,
+    easing: "cubic-bezier(0, 0.3, 0.7, 1)",
+    waitForTransition: true,
   }}
   on:click={handleClick}
 >
