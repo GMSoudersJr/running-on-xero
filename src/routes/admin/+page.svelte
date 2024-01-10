@@ -1,94 +1,96 @@
 <script>
 </script>
 
-<form
-  method="post"
-  action="?/addPost"
->
-  <h1>Add a Post</h1>
-  <label
-    for="title"
+<div class="page-container">
+  <form
+    method="post"
+    action="?/addPost"
   >
-    Title:
-    <input
-      type="text"
-      name="title"
-      id="title"
+    <h1>Add a Post</h1>
+    <label
+      for="title"
     >
-  </label>
+      Title:
+      <input
+        type="text"
+        name="title"
+        id="title"
+      >
+    </label>
 
-  <label
-    for="content"
-  >
-    Content:
-    <textarea
-      name="content"
-      id="content"
-      rows="7"
-    ></textarea>
-  </label>
-
-  <label
-    for="imageUrl"
-  >
-    Image url:
-    <input
-      type="url"
-      name="imageUrl"
-      id="imageUrl"
+    <label
+      for="content"
     >
-  </label>
+      Content:
+      <textarea
+        name="content"
+        id="content"
+        rows="7"
+      ></textarea>
+    </label>
 
-  <label
-    for="imageAlt"
-  >
-    Image alt:
-    <input
-      type="url"
-      name="imageAlt"
-      id="imageAlt"
+    <label
+      for="imageUrl"
     >
-  </label>
+      Image url:
+      <input
+        type="url"
+        name="imageUrl"
+        id="imageUrl"
+      >
+    </label>
 
-  <label
-    for="slug"
-  >
-    Slug:
-    <input
-      type="text"
-      name="slug"
-      id="slug"
+    <label
+      for="imageAlt"
     >
-  </label>
+      Image alt:
+      <input
+        type="url"
+        name="imageAlt"
+        id="imageAlt"
+      >
+    </label>
 
-  <label
-    for="description"
-  >
-    Description:
-    <input
-      type="text"
-      name="description"
-      id="description"
+    <label
+      for="slug"
     >
-  </label>
+      Slug:
+      <input
+        type="text"
+        name="slug"
+        id="slug"
+      >
+    </label>
 
-  <label
-    for="passphrase"
-  >
-    Passphrase:
-    <input
-      type="password"
-      name="passphrase"
-      id="passphrase"
+    <label
+      for="description"
     >
-  </label>
+      Description:
+      <input
+        type="text"
+        name="description"
+        id="description"
+      >
+    </label>
 
-  <input
-    type="submit"
-    name="submit"
-    id="submit"
-  >
-</form>
+    <label
+      for="passphrase"
+    >
+      Passphrase:
+      <input
+        type="password"
+        name="passphrase"
+        id="passphrase"
+      >
+    </label>
+
+    <input
+      type="submit"
+      name="submit"
+      id="submit"
+    >
+  </form>
+</div>
 
 <style>
   h1 {
@@ -113,6 +115,12 @@
   textarea {
     padding: 12px 20px;
     margin: 4px 0;
+  }
+
+  @media screen and (min-width: 40em) {
+    form {
+      width: 600px;
+    }
   }
 
 </style>
