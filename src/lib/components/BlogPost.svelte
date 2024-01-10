@@ -89,7 +89,7 @@
     line-height: 1.5;
   }
   .content {
-    height: 15dvh;
+    height: 20dvh;
     overflow: scroll;
   }
 </style>

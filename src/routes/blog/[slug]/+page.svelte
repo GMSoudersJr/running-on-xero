@@ -19,13 +19,18 @@
   $: post = data.posts?.at(index);
   $: previous = data.posts?.at(index - 1);
   $: next = data.posts?.at(index + 1);
-  let width: number;
-
-  $: rem = width / 16;
 
 </script>
 
-<svelte:window bind:innerWidth={width}/>
+<svelte:head>
+  <title>
+    {post?.title}
+  </title>
+  <meta
+    name="description"
+    content={post?.description}
+  />
+</svelte:head>
 <div class="page-container">
 {#if post}
   <BlogPost
@@ -38,9 +43,8 @@
 {/if}
   <section class="navigation-directions">
     <div class="swipe">
-      <p>swipe the picture to navigate 🧭</p>
+      <p>🧭 Swipe the picture to navigate 🧭</p>
     </div>
-    <p>{rem}rem</p>
     <div class="buttons">
       <div class="previous-navigation">
         {#if previous && index > 0}
@@ -59,8 +63,8 @@
 <style>
   .swipe {
     background-color: var(--whiteStripe);
-    padding: 4px 8px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 14px;
   }
   .page-container {
     display: grid;
@@ -73,6 +77,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: min-content;
     justify-items: center;
+    padding-top: 1em;
   }
   .buttons {
     display: none;
