@@ -8,7 +8,7 @@
   --darkYellow: #b08425;
   --charcoalGray: #3C4142;
 }
-h1, h2, p {
+h1, h2, h3, p {
   font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
 }
 h1, h2 {

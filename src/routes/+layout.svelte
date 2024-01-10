@@ -18,6 +18,7 @@
 
   export let data: LayoutData;
   $: currentSlug = $page.params?.slug;
+  $: recentPosts = data.posts.slice(-3).reverse();
 </script>
 <div class="layout-container">
   <ViewTransition />
@@ -32,7 +33,7 @@
   <aside>
     <h3>Recent posts</h3>
     <ul>
-      {#each data.posts as post}
+      {#each recentPosts as post}
         {#if post.slug === currentSlug}
         <li class="current">
           <a href="/blog/{post.slug}">
@@ -40,7 +41,7 @@
           </a>
         </li>
       {:else}
-        <li>
+        <li class="no-bullet">
           <a href="/blog/{post.slug}">
             {post.title}
           </a>
@@ -58,6 +59,9 @@
 <style>
   li.current a {
     color: var(--shortsColor);
+  }
+  li.no-bullet {
+    list-style: none;
   }
   a {
     font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
@@ -85,7 +89,7 @@
     color: var(--charcoalGray);
     grid-area: aside;
     align-self: end;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     padding-left: 1em;
     view-transition-name: aside-recent-posts;
   }

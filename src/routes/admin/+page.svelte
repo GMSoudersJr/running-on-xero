@@ -45,7 +45,7 @@
     >
       Image alt:
       <input
-        type="url"
+        type="text"
         name="imageAlt"
         id="imageAlt"
       >
