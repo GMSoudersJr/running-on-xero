@@ -88,4 +88,8 @@
     font-family:  'Outfit', 'Noto Color Emoji', sans-serif;
     line-height: 1.5;
   }
+  .content {
+    height: 15dvh;
+    overflow: scroll;
+  }
 </style>

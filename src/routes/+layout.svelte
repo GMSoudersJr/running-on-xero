@@ -30,7 +30,7 @@
   </main>
 
   <aside>
-    <h2>Recent posts</h2>
+    <h3>Recent posts</h3>
     <ul>
       {#each data.posts as post}
         {#if post.slug === currentSlug}
@@ -65,7 +65,6 @@
     color: var(--darkYellow);
   }
   .layout-container {
-    width: 100%;
     height: calc(100svh);
     display: grid;
     grid-template-columns: 1fr;
@@ -86,8 +85,8 @@
     color: var(--charcoalGray);
     grid-area: aside;
     align-self: end;
-    padding-left: 1em;
     padding-bottom: 1em;
+    padding-left: 1em;
     view-transition-name: aside-recent-posts;
   }
   main {
@@ -99,7 +98,15 @@
     justify-content: end;
   }
 
-  @media screen and (min-width: 48em) {
+  @media screen and (min-width: 37.5em) {
+    aside {
+      width: 600px;
+      padding-left: 0;
+      justify-self: center;
+    }
+  }
+
+  @media screen and (min-width: 50em) {
     .layout-container {
       grid-template-columns: 1fr 3fr 1fr;
       grid-template-rows: 60px 1fr min-content;
@@ -115,7 +122,9 @@
       place-self: start;
       justify-self: center;
     }
+    aside {
+      width: auto;
+    }
   }
-
 </style>
 
