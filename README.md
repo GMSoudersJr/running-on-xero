@@ -1,5 +1,5 @@
-# Running On Xero (blog)
 # [Running on Xero (blog)](https://running-on-xero.vercel.app "Gerald's Xero Shoes Blog")
+
 A blog to celebrate my love of running in Xero Shoes!
 
 ## Overview
