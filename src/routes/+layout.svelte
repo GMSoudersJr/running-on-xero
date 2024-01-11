@@ -17,9 +17,14 @@
   }
 
   export let data: LayoutData;
+  let width: number;
   $: currentSlug = $page.params?.slug;
-  $: recentPosts = data.posts.slice(-3).reverse();
+  $: desktopRecentPosts = data.posts;
+  $: mobileRecentPosts = data.posts.slice(-3);
+  $: rem = width / 16;
 </script>
+
+<svelte:window bind:innerWidth={width} />
 <div class="layout-container">
   <ViewTransition />
   <nav>
@@ -33,21 +38,39 @@
   <aside>
     <h3>Recent posts</h3>
     <ul>
-      {#each recentPosts as post}
-        {#if post.slug === currentSlug}
-        <li class="current">
-          <a href="/blog/{post.slug}">
-            {post.title}
-          </a>
-        </li>
+      {#if rem <= 48}
+        {#each mobileRecentPosts as post}
+          {#if post.slug === currentSlug}
+          <li class="current">
+            <a href="/blog/{post.slug}">
+              {post.title}
+            </a>
+          </li>
+        {:else}
+          <li class="no-bullet">
+            <a href="/blog/{post.slug}">
+              {post.title}
+            </a>
+          </li>
+          {/if}
+        {/each}
       {:else}
-        <li class="no-bullet">
-          <a href="/blog/{post.slug}">
-            {post.title}
-          </a>
-        </li>
-        {/if}
-      {/each}
+        {#each desktopRecentPosts as post}
+          {#if post.slug === currentSlug}
+          <li class="current">
+            <a href="/blog/{post.slug}">
+              {post.title}
+            </a>
+          </li>
+        {:else}
+          <li class="no-bullet">
+            <a href="/blog/{post.slug}">
+              {post.title}
+            </a>
+          </li>
+          {/if}
+        {/each}
+      {/if}
     </ul>
   </aside>
 
