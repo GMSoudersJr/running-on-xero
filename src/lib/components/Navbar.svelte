@@ -34,9 +34,11 @@
     })
     navItem?.classList.add("active");
   }
+  let width: number;
 
 </script>
 
+<svelte:window bind:innerWidth={width} />
 <nav>
   <ul class="navbarUl" id="navbarUl">
      {#each navItems as navItem (navItem.id)}
@@ -49,7 +51,7 @@
          on:click={handleClick}
          href={navItem.href}
        >
-         {#if navItem.name === 'Home'}
+         {#if navItem.name === 'Home' && width <= 768 }
            {navItem.emoji}
          {:else}
            {navItem.name}
@@ -80,17 +82,12 @@
     padding: 0;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr repeat(3, fit-content(160px));
-    justify-items: end;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
   }
 
-  .nav-left {
-    justify-self: start;
-  }
 
   li {
-    float: left;
     font-size: 1.5em;
   }
 
@@ -126,6 +123,7 @@
   @media screen and (max-width: 48em) {
     ul {
       width: 100vw;
+      grid-template-columns: 1fr repeat(3, fit-content(160px));
     }
 
     .nav-right {
