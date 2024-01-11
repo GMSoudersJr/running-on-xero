@@ -39,7 +39,7 @@ export async function getAllPostsFromDatabase() {
 	}
 	try {
 		await client.connect();
-		const posts = await blogCollection.find({}, options).toArray();
+		const posts = (await blogCollection.find({}, options).toArray()).reverse();
 		return posts;
 
 	} catch (error) {

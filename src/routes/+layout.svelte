@@ -20,7 +20,7 @@
   let width: number;
   $: currentSlug = $page.params?.slug;
   $: desktopRecentPosts = data.posts;
-  $: mobileRecentPosts = data.posts.slice(-3);
+  $: mobileRecentPosts = data.posts.slice(0, 3);
   $: rem = width / 16;
 </script>
 
