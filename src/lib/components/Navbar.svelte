@@ -111,14 +111,8 @@
   }
 
   @media screen and (max-width: 80em) {
-    ul {
-      background-color: red;
-    }
   }
   @media screen and (max-width: 64em) {
-    ul {
-      background-color: white;
-    }
   }
   @media screen and (max-width: 48em) {
     ul {
