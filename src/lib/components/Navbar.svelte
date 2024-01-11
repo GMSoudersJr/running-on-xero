@@ -86,7 +86,6 @@
     align-items: center;
   }
 
-
   li {
     font-size: 1.5em;
   }
