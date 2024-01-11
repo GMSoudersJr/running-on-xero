@@ -37,15 +37,15 @@
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
       if ( xDiff > 0 ) {
-        direction = "next";
+        direction = "older";
       } else {
-        direction = "prev";
+        direction = "newer";
       }
     } else {
       if ( yDiff > 0 ) {
-        direction = "next";
+        direction = "older";
       } else {
-        direction = "prev";
+        direction = "newer";
       }
     }
 

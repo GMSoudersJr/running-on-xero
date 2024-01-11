@@ -8,11 +8,11 @@
 
   async function handleSwipe(event: CustomEvent) {
     const swipeDirection = event.detail;
-    if ( swipeDirection === 'next' && next ) {
-      await goto(`/blog/${next.slug}`)
+    if ( swipeDirection === 'older' && older ) {
+      await goto(`/blog/${older.slug}`)
     }
-    if ( swipeDirection === 'prev' && previous && index > 0) {
-      await goto(`/blog/${previous.slug}`)
+    if ( swipeDirection === 'newer' && newer && index > 0) {
+      await goto(`/blog/${newer.slug}`)
     }
   }
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
