@@ -26,7 +26,7 @@
   function handleClick(event: MouseEvent) {
     let clicked = event?.target?.id;
     let navItem = document.getElementById(clicked)?.parentElement;
-    let allNavItemsNew = document.querySelectorAll(".navItem")
+    let allNavItemsNew = document.querySelectorAll(".nav-item")
     allNavItemsNew.forEach(( item ) => {
       if ( item.classList.contains("active") && item.id != navItem?.id ) {
         item.classList.remove("active");
@@ -96,6 +96,7 @@
     text-align: center;
     text-decoration: none;
     padding: 14px 16px;
+    color: var(--charcoalGray);
   }
 
   li a:hover {
@@ -111,8 +112,14 @@
   }
 
   @media screen and (max-width: 80em) {
+    ul {
+      background-color: #FFF;
+    }
   }
   @media screen and (max-width: 64em) {
+    ul {
+      background-color: #FFF;
+    }
   }
   @media screen and (max-width: 48em) {
     ul {
