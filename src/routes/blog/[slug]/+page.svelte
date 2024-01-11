@@ -17,8 +17,8 @@
   }
   $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
   $: post = data.posts?.at(index);
-  $: previous = data.posts?.at(index - 1);
-  $: next = data.posts?.at(index + 1);
+  $: newer = data.posts?.at(index - 1);
+  $: older = data.posts?.at(index + 1);
 
 </script>
 
@@ -46,14 +46,14 @@
       <p>🧭 Swipe the picture to navigate 🧭</p>
     </div>
     <div class="buttons">
-      <div class="previous-navigation">
-        {#if previous && index > 0}
-          <a href={`/blog/${previous.slug}`}>⏮ Previous</a>
+      <div class="newer-navigation">
+        {#if newer && index > 0}
+          <a href={`/blog/${newer.slug}`}>⏮ Newer</a>
         {/if}
       </div>
-      <div class="next-post">
-        {#if next}
-          <a href={`/blog/${next.slug}`}>Next ⏭</a>
+      <div class="older-navigation">
+        {#if older}
+          <a href={`/blog/${older.slug}`}>Older ⏭</a>
         {/if}
       </div>
     </div>
