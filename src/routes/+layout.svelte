@@ -106,6 +106,7 @@
     aside {
       width: 600px;
       padding-left: 0;
+      padding-top: 2rem;
       justify-self: center;
     }
   }
@@ -117,16 +118,18 @@
       gap: 1em;
       padding-left: 1em;
       padding-right: 1em;
+      align-items: baseline;
       grid-template-areas:
       "nav nav nav"
       ". main aside "
       "footer footer footer";
     }
-    main, aside {
+    main {
       place-self: start;
       justify-self: center;
     }
     aside {
+      place-self: start;
       width: auto;
     }
   }
