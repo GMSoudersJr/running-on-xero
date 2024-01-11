@@ -1,6 +1,15 @@
 <script lang="ts">
 </script>
 
+<svelte:head>
+  <title>
+    About
+  </title>
+  <meta
+    name="description"
+    content="A Blog by Gerald Souders about running in Xero Shoes with Affiliate Links included"
+  >
+</svelte:head>
 <div class="page-container">
   <h1 class="title">
     About this site

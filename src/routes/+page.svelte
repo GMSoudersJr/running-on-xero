@@ -7,6 +7,16 @@
   $: posts = data.posts;
 </script>
 
+<svelte:head>
+  <title>
+    Running on Xero
+  </title>
+  <meta
+    name="description"
+    content="A Blog about Running in Xero Shoes and the benefits of minimalist running by Gerald Souders"
+  >
+</svelte:head>
+
 <div class="page-container">
   <h1>Running on Xero</h1>
   <Carousel {posts}/>
