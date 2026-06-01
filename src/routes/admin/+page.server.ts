@@ -15,18 +15,16 @@ export const actions = {
 		const description = postData.get('description')?.toString();
 		const passphrase = postData.get('passphrase')?.toString();
 
-		if (!slug) {
-			return fail(400, { title, content, imageUrl, missing: true })
+		const preserved = { title, content, imageUrl, imageAlt, slug, description };
+
+		if (!slug || !passphrase) {
+			return fail(400, { ...preserved, missing: true });
 		}
 
 		const formattedSlug = hyphenateSlug(slug)
 
-		if ( passphrase != ADMIN ) {
-			return fail(401, { title, content, imageUrl, incorrect: true });
-		}
-		
-		if (!passphrase) {
-			return fail(400, { title, content, imageUrl, missing: true });
+		if (passphrase != ADMIN) {
+			return fail(401, { ...preserved, incorrect: true });
 		}
 
 		const post = {
