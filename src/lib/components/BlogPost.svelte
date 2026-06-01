@@ -1,10 +1,19 @@
 <script lang="ts">
 	import {createEventDispatcher, onMount} from "svelte";
 
-  export let title: string;
-  export let imageUrl: string;
-  export let imageAlt: string;
-  export let content: string;
+  interface Props {
+    title: string;
+    imageUrl: string;
+    imageAlt: string;
+    content: string;
+  }
+
+  let {
+    title,
+    imageUrl,
+    imageAlt,
+    content
+  }: Props = $props();
 
   const dispatch = createEventDispatcher();
 

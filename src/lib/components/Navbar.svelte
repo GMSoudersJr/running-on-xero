@@ -24,7 +24,7 @@
   ];
 
   function handleClick(event: MouseEvent) {
-    let clicked = event?.target?.id;
+    let clicked = (event?.target as HTMLElement)?.id;
     let navItem = document.getElementById(clicked)?.parentElement;
     let allNavItemsNew = document.querySelectorAll(".nav-item")
     allNavItemsNew.forEach(( item ) => {
@@ -34,7 +34,7 @@
     })
     navItem?.classList.add("active");
   }
-  let width: number;
+  let width: number = $state(0);
 
 </script>
 
@@ -48,10 +48,10 @@
      >
        <a
          id={navItem.id}
-         on:click={handleClick}
+         onclick={handleClick}
          href={navItem.href}
        >
-         {#if navItem.name === 'Home' && width <= 768 }
+         {#if navItem.name === 'Home' && width <= 768}
            {navItem.emoji}
          {:else}
            {navItem.name}

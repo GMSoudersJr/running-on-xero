@@ -2,10 +2,14 @@
   import BlogCard from "$lib/components/BlogCard.svelte";
   import type { PageData } from "../$types";
 
-  export let data: PageData;
-  $: ({ posts } = data);
-  let width: number;
-  $: rem = width / 16;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { posts } = $derived(data);
+  let width: number = $state(0);
+  let rem = $derived(width / 16);
 </script>
 
 <svelte:window bind:innerWidth={width} />

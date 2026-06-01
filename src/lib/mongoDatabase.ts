@@ -1,27 +1,38 @@
 import { DB_URI, DB_NAME } from "$env/static/private";
-import {MongoClient, ServerApiVersion} from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
+interface BlogPost {
+	title: string;
+	content: string;
+	slug: string;
+	imageUrl: string;
+	imageAlt: string;
+	description: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const client = new MongoClient(DB_URI, {
 	serverApi: {
 		version: ServerApiVersion.v1,
 		strict: true,
 		deprecationErrors: true,
 	}
-});
+} as any);
+
+// Connect once. The driver maintains a connection pool — do not call
+// connect()/close() around individual operations.
+await client.connect();
 
 const db = client.db(DB_NAME);
-const blogCollection = db.collection('blog');
+const blogCollection = db.collection<BlogPost>('blog');
 const photosCollection = db.collection('photos');
 
-export async function addPost(post: object) {
+export async function addPost(post: BlogPost) {
 	try {
-		await client.connect();
 		const addedPost = await blogCollection.insertOne(post);
 		return addedPost.acknowledged;
 	} catch (error) {
 		console.log("Error adding post @addPost", error);
-	} finally {
-		client.close();
 	}
 }
 
@@ -38,14 +49,10 @@ export async function getAllPostsFromDatabase() {
 		}
 	}
 	try {
-		await client.connect();
 		const posts = (await blogCollection.find({}, options).toArray()).reverse();
 		return posts;
-
 	} catch (error) {
 		console.log('Error getting all posts @getAllPostsFromDatabase', error)
-	} finally {
-		await client.close();
 	}
 }
 
@@ -57,17 +64,14 @@ export async function getPost(slug: string) {
 			content: 1,
 			slug: 1,
 			imageUrl: 1,
-			imageAlt: 1 ,
+			imageAlt: 1,
 			description: 1
 		}
 	}
 	try {
-		await client.connect();
-		const post  = await blogCollection.findOne({slug: slug}, options);
+		const post = await blogCollection.findOne({slug: slug}, options);
 		return post;
 	} catch (error) {
 		console.log('Error getting a post @getPostFromDatabase', error);
-	} finally {
-		await client.close();
 	}
 }

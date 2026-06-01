@@ -43,17 +43,16 @@ export const localeDateString = () => {
 
 /**
  * @param {HTMLElement} node
+ * @param {() => void} [callback]
  */
-export function clickOutside(node) {
+export function clickOutside(node, callback) {
 
 	/**
 	 * @param {MouseEvent} event
 	 */
 	const handleClick = event => {
-		if (node && !node.contains(event.target) && !event.defaultPrevented) {
-			node.dispatchEvent(
-				new CustomEvent('click_outside', node)
-			)
+		if (node && !node.contains(/** @type {Node} */ (event.target)) && !event.defaultPrevented) {
+			callback?.();
 		}
 	}
 

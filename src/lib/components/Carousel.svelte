@@ -1,70 +1,132 @@
 <script lang="ts">
-	import {goto} from '$app/navigation';
+  import { goto } from '$app/navigation';
 
-  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
-  import '@splidejs/svelte-splide/css';
-  const carouselImages = [
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV86cNXWEIGqghsQmLUp1Gi0Yihhm7PzMwkJA7rOa9eAydLIdVPY_nfMe1TK5p-V15vfMsevNxngr01Z8TIKL1TAEexERxQNylXfbrhI6NvFu3j2eJ1n8PdCc5WXR_YT2CHsBShQgTvJ8v5CrLugYBgoIow=w965-h626-s-no-gm?authuser=0",
-      imageAlt: "image 1"
-    },
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV87Xizvc33TtcNVtHKy41EPF7CHjFB5MO0SbpMEfpKoK5f78uWD31kgRWbp2iDqQGRKPFZ3P8EXvdBOqIapOfr1lTvbZxCP8cExeDojdOb4A8uaAhqVHw3YBUqCbzo1mAZSGqQ_-cUs3gY5uvqtYIdTAaA=w800-h533-s-no-gm?authuser=0",
-      imageAlt: "image 2"
-    },
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV86BqgrrnKWpXPv0amwcVKfU04Ch-znp7fvER5VpPzqNqcqeWwImeAGIp7g46nsFK8MzUpWu5NkDlXIuit5qOotjlzunH-EqI3eoqs57q12Pw3ZTiW7QQtNlv-_al92vCRR5W1SPOcWVOsAydp2hdRIs4w=w643-h366-s-no-gm?authuser=0",
-      imageAlt: "image 3"
-    },
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV85iU3z0XsW5cov_qxEPpXHeqF7m_6BhbiXK4_fj-qRO8suTxPFnmr39RFcRWBHetAyZZav1k0Zw3E0KDIbrnmW0YoY2LpUVRGq-Mu9AnL3ww33nuFfE18PhDgIleT2xGKg22ZlUik73uxUkey5JslmVhQ=w800-h533-s-no-gm?authuser=0",
-      imageAlt: "image 4"
-    },
-    {
-      imageUrl: "https://lh3.googleusercontent.com/pw/ABLVV84qAT0yZK_P29hHNdbMSXM4LPVAFoLvoS6eShGQBHQx13wBR6Td4W0XtE4c9lxE4QH_0SPu4rhaH3KIw9C3mRO4pLA0k2juLtlxvbp3uoeTfDmYjI88w-54H6lwOYDdLkHg3Cf_o8t0o68wVsm4eD8WHA=w959-h958-s-no-gm?authuser=0",
-      imageAlt: "image 6"
-    },
-  ];
-  async function handleClick(event: MouseEvent) {
-    const slideIndex = event.detail.Slide.index;
-    const blogSlug = posts.at(slideIndex).slug;
-    await goto(`/blog/${blogSlug}`);
-
+  interface Post {
+    slug: string;
+    imageUrl: string;
+    title: string;
   }
 
-  export let posts;
+  let { posts }: { posts: Post[] } = $props();
+
+  const DELAY = 3500;
+  const DURATION = 1400;
+
+  let activeIndex = $state(0);
+  let leavingIndex = $state<number | null>(null);
+  let paused = $state(false);
+
+  $effect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const interval = setInterval(() => {
+      if (!paused) advance();
+    }, DELAY);
+    return () => clearInterval(interval);
+  });
+
+  function advance() {
+    leavingIndex = activeIndex;
+    activeIndex = (activeIndex + 1) % posts.length;
+    setTimeout(() => { leavingIndex = null; }, DURATION);
+  }
+
+  async function handleClick() {
+    const slug = posts[activeIndex]?.slug;
+    if (slug) await goto(`/blog/${slug}`);
+  }
 </script>
 
-<Splide
-  aria-label="Intro Carousel"
-  options={{
-    arrows: false,
-    autoplay: true,
-    cover: true,
-    easing: "cubic-bezier(0, 0.3, 0.7, 1)",
-    gap: 4,
-    heightRatio: 0.618,
-    interval: 3500,
-    pagination: false,
-    pauseOnHover: true,
-    rewind: true,
-    rewindByDrag: true,
-    speed: 1000,
-    type: 'fade',
-    updateOnMove: true,
-    waitForTransition: true,
-  }}
-  on:click={handleClick}
+<div
+  class="carousel"
+  onmouseenter={() => paused = true}
+  onmouseleave={() => paused = false}
+  role="region"
+  aria-label="Image carousel"
 >
-  {#each posts as post}
-  <SplideSlide>
-    <img src={post.imageUrl} alt={post.title}/>
-  </SplideSlide>
+  {#each posts as post, i (post.slug)}
+    <button
+      type="button"
+      class="slide"
+      class:active={i === activeIndex}
+      class:leaving={i === leavingIndex}
+      aria-label="View post: {post.title}"
+      aria-hidden={i !== activeIndex && i !== leavingIndex ? 'true' : undefined}
+      tabindex={i === activeIndex ? 0 : -1}
+      onclick={handleClick}
+    >
+      <img src={post.imageUrl} alt={post.title} />
+    </button>
   {/each}
-</Splide>
+
+  <button
+    type="button"
+    class="pause-btn"
+    aria-label={paused ? 'Play carousel' : 'Pause carousel'}
+    onclick={() => paused = !paused}
+  >
+    {#if paused}▶{:else}⏸{/if}
+  </button>
+</div>
 
 <style>
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 0.618;
+  }
+  /* Default: parked off-screen right, reset is instant */
+  .slide {
+    position: absolute;
+    inset: 0;
+    transform: translateX(100%);
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: none;
+  }
+  /* Incoming: slides in from the right */
+  .slide.active {
+    transform: translateX(0);
+    transition: transform 1400ms ease-in-out;
+  }
+  /* Outgoing: slides out to the left */
+  .slide.leaving {
+    transform: translateX(-100%);
+    transition: transform 1400ms ease-in-out;
+  }
   img {
-    width: 100%
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pause-btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  /* Show on hover or when carousel is keyboard focused */
+  .carousel:hover .pause-btn,
+  .carousel:focus-within .pause-btn {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .slide,
+    .slide.active,
+    .slide.leaving {
+      transition: none;
+    }
   }
 </style>

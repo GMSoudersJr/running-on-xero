@@ -6,15 +6,24 @@
     await goto(`blog/${image.id}`);
   }
 
-  export let imageUrl: string;
-  export let title: string;
-  export let slug: string;
-  export let alt: string;
+  interface Props {
+    imageUrl: string;
+    title: string;
+    slug: string;
+    alt: string;
+  }
+
+  let {
+    imageUrl,
+    title,
+    slug,
+    alt
+  }: Props = $props();
 </script>
 
 <button
   type="button"
-  on:click={handleClick}
+  onclick={handleClick}
 >
   <img
     src={imageUrl}

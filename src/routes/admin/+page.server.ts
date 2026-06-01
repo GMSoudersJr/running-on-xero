@@ -38,7 +38,7 @@ export const actions = {
 			description
 		}
 
-		const addedPost = await addPost(post);
+		const addedPost = await addPost(post as Parameters<typeof addPost>[0]);
 		
 		if ( addedPost ) {
 			return { success: true }
