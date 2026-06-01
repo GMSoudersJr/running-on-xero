@@ -66,6 +66,7 @@
 <section id="blog-post">
 	<h1 class="title">{title}</h1>
 	<img id="blog-image" class="image" src={imageUrl} alt={imageAlt} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<div class="content">{@html content}</div>
 </section>
 

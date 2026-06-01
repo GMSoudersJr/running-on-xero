@@ -8,11 +8,8 @@
 
 	let { data }: Props = $props();
 	let { posts } = $derived(data);
-	let width: number = $state(0);
-	let rem = $derived(width / 16);
 </script>
 
-<svelte:window bind:innerWidth={width} />
 <h1 class="title">Running on Xero</h1>
 <section class="cards-grid-container">
 	{#each posts as post}
