@@ -10,14 +10,13 @@ interface BlogPost {
 	description: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const client = new MongoClient(DB_URI, {
 	serverApi: {
 		version: ServerApiVersion.v1,
 		strict: true,
 		deprecationErrors: true
 	}
-} as any);
+});
 
 // Connect once. The driver maintains a connection pool — do not call
 // connect()/close() around individual operations.
@@ -25,7 +24,6 @@ await client.connect();
 
 const db = client.db(DB_NAME);
 const blogCollection = db.collection<BlogPost>('blog');
-const photosCollection = db.collection('photos');
 
 export async function addPost(post: BlogPost) {
 	try {

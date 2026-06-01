@@ -8,12 +8,11 @@
 
 	interface Props {
 		imageUrl: string;
-		title: string;
 		slug: string;
 		alt: string;
 	}
 
-	let { imageUrl, title, slug, alt }: Props = $props();
+	let { imageUrl, slug, alt }: Props = $props();
 </script>
 
 <button type="button" onclick={handleClick}>

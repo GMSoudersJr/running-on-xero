@@ -2,11 +2,11 @@
 	import { onNavigate } from '$app/navigation';
 
 	onNavigate((navigation) => {
-		// @ts-ignore
+		// @ts-expect-error -- startViewTransition is not yet in the TS DOM lib
 		if (!document.startViewTransition) return;
 
 		return new Promise((resolve) => {
-			// @ts-ignore
+			// @ts-expect-error -- startViewTransition is not yet in the TS DOM lib
 			document.startViewTransition(async () => {
 				resolve();
 				await navigation.complete;
