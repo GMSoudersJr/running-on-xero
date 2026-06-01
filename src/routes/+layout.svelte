@@ -16,12 +16,17 @@
     }[]
   }
 
-  export let data: LayoutData;
-  let width: number;
-  $: currentSlug = $page.params?.slug;
-  $: desktopRecentPosts = data.posts;
-  $: mobileRecentPosts = data.posts.slice(0, 3);
-  $: rem = width / 16;
+  interface Props {
+    data: LayoutData;
+    children?: import('svelte').Snippet;
+  }
+
+  let { data, children }: Props = $props();
+  let width: number = $state(0);
+  let currentSlug = $derived($page.params?.slug);
+  let desktopRecentPosts = $derived(data.posts ?? []);
+  let mobileRecentPosts = $derived(data.posts?.slice(0, 3) ?? []);
+  let rem = $derived(width / 16);
 </script>
 
 <svelte:window bind:innerWidth={width} />
@@ -32,7 +37,7 @@
   </nav>
 
   <main>
-    <slot />
+    {@render children?.()}
   </main>
 
   <aside>

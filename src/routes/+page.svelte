@@ -3,8 +3,12 @@
   import type { PageData } from "./$types";
 	import Carousel from "$lib/components/Carousel.svelte";
 
-  export let data: PageData;
-  $: posts = data.posts;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let posts = $derived(data.posts ?? []);
 </script>
 
 <svelte:head>

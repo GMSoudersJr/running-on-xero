@@ -4,7 +4,11 @@
 	import BlogPost from "$lib/components/BlogPost.svelte";
 	import {goto} from "$app/navigation";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   async function handleSwipe(event: CustomEvent) {
     const swipeDirection = event.detail;
@@ -15,10 +19,10 @@
       await goto(`/blog/${newer.slug}`)
     }
   }
-  $: index = data.posts?.findIndex(post => post.slug === $page.params.slug);
-  $: post = data.posts?.at(index);
-  $: newer = data.posts?.at(index - 1);
-  $: older = data.posts?.at(index + 1);
+  let index = $derived(data.posts?.findIndex(post => post.slug === $page.params.slug) ?? -1);
+  let post = $derived(data.posts?.at(index));
+  let newer = $derived(data.posts?.at(index - 1));
+  let older = $derived(data.posts?.at(index + 1));
 
 </script>
 

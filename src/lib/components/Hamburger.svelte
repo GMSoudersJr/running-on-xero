@@ -41,11 +41,10 @@
   type=button
   class="hamburger-container"
   id="hamburger-container"
-  on:click={toggleHamburger}
+  onclick={toggleHamburger}
   style="transform: rotate(-{$angle * 2}deg)"
   title="Click to toggle the menu"
-  use:clickOutside
-  on:click_outside={handleClickOutside}
+  use:clickOutside={handleClickOutside}
 >
   <div
     class="hamburger-line"
