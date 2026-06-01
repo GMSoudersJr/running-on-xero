@@ -1,8 +1,8 @@
-import {ADMIN} from '$env/static/private';
-import {fail} from '@sveltejs/kit';
+import { ADMIN } from '$env/static/private';
+import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import {addPost} from '$lib/mongoDatabase';
-import {hyphenateSlug} from '$lib/utils';
+import { addPost } from '$lib/mongoDatabase';
+import { hyphenateSlug } from '$lib/utils';
 
 export const actions = {
 	addPost: async ({ request }) => {
@@ -21,7 +21,7 @@ export const actions = {
 			return fail(400, { ...preserved, missing: true });
 		}
 
-		const formattedSlug = hyphenateSlug(slug)
+		const formattedSlug = hyphenateSlug(slug);
 
 		if (passphrase != ADMIN) {
 			return fail(401, { ...preserved, incorrect: true });
@@ -34,14 +34,12 @@ export const actions = {
 			imageAlt,
 			slug: formattedSlug,
 			description
-		}
+		};
 
 		const addedPost = await addPost(post as Parameters<typeof addPost>[0]);
-		
-		if ( addedPost ) {
-			return { success: true }
+
+		if (addedPost) {
+			return { success: true };
 		}
-
 	}
-
 } satisfies Actions;

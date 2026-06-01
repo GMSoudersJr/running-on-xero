@@ -1,5 +1,5 @@
-import { DB_URI, DB_NAME } from "$env/static/private";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { DB_URI, DB_NAME } from '$env/static/private';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 interface BlogPost {
 	title: string;
@@ -15,7 +15,7 @@ const client = new MongoClient(DB_URI, {
 	serverApi: {
 		version: ServerApiVersion.v1,
 		strict: true,
-		deprecationErrors: true,
+		deprecationErrors: true
 	}
 } as any);
 
@@ -32,7 +32,7 @@ export async function addPost(post: BlogPost) {
 		const addedPost = await blogCollection.insertOne(post);
 		return addedPost.acknowledged;
 	} catch (error) {
-		console.log("Error adding post @addPost", error);
+		console.log('Error adding post @addPost', error);
 	}
 }
 
@@ -47,12 +47,12 @@ export async function getAllPostsFromDatabase() {
 			imageAlt: 1,
 			description: 1
 		}
-	}
+	};
 	try {
 		const posts = (await blogCollection.find({}, options).toArray()).reverse();
 		return posts;
 	} catch (error) {
-		console.log('Error getting all posts @getAllPostsFromDatabase', error)
+		console.log('Error getting all posts @getAllPostsFromDatabase', error);
 	}
 }
 
@@ -67,9 +67,9 @@ export async function getPost(slug: string) {
 			imageAlt: 1,
 			description: 1
 		}
-	}
+	};
 	try {
-		const post = await blogCollection.findOne({slug: slug}, options);
+		const post = await blogCollection.findOne({ slug: slug }, options);
 		return post;
 	} catch (error) {
 		console.log('Error getting a post @getPostFromDatabase', error);

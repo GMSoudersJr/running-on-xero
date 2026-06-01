@@ -2,24 +2,24 @@ export const dayOfTheWeek = () => {
 	const date = new Date(Date.now());
 	const dayAsANumber = date.getDay();
 	const dayNames = [
-		"Sunday",
-		"Monday",
-		"Tuesday",
-		"Wednesday",
-		"Thursday",
-		"Friday",
-		"Saturday",
-		"Sunday"
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+		'Sunday'
 	];
 
 	return dayNames[dayAsANumber];
-}
+};
 
 export const thisYear = () => {
 	const date = new Date(Date.now());
 
 	return date.getFullYear();
-}
+};
 
 export const localeDateString = () => {
 	const date = new Date(Date.now());
@@ -28,33 +28,31 @@ export const localeDateString = () => {
 	 * @type {Intl.DateTimeFormatOptions}
 	 */
 	let options = {
-		weekday : "long",
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-		hour: "numeric",
-		minute: "numeric",
-		dayPeriod: "short",
+		weekday: 'long',
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+		dayPeriod: 'short'
 	};
 
 	return new Intl.DateTimeFormat(undefined, options).format(date);
-}
-
+};
 
 /**
  * @param {HTMLElement} node
  * @param {() => void} [callback]
  */
 export function clickOutside(node, callback) {
-
 	/**
 	 * @param {MouseEvent} event
 	 */
-	const handleClick = event => {
+	const handleClick = (event) => {
 		if (node && !node.contains(/** @type {Node} */ (event.target)) && !event.defaultPrevented) {
 			callback?.();
 		}
-	}
+	};
 
 	document.addEventListener('click', handleClick, true);
 
@@ -62,7 +60,7 @@ export function clickOutside(node, callback) {
 		destroy() {
 			document.removeEventListener('click', handleClick, true);
 		}
-	}
+	};
 }
 
 /**
@@ -83,7 +81,7 @@ export function typewriter(node, params, { speed = 1 }) {
 	/**
 	 * @type {?string}
 	 */
-	const text = node.textContent || "";
+	const text = node.textContent || '';
 	const duration = text.length / (speed * 0.01);
 
 	return {
@@ -96,7 +94,7 @@ export function typewriter(node, params, { speed = 1 }) {
 			const i = ~~(text.length * t);
 			node.textContent = text.slice(0, i);
 		}
-	}
+	};
 }
 
 /**
@@ -108,7 +106,7 @@ export function convertStringToFlagEmojiCode(countryCode) {
 	const codePoints = countryCode
 		.toUpperCase()
 		.split('')
-		.map(char => charCodeOffset + char.charCodeAt(0));
+		.map((char) => charCodeOffset + char.charCodeAt(0));
 	return String.fromCodePoint(...codePoints);
 }
 
@@ -132,9 +130,9 @@ export function sorter(someCountry, anotherCountry) {
  *
  */
 export function hyphenateSlug(slug) {
-	let hyphentatedSlug = "";
-	if ( slug.includes(" ") ) {
-		hyphentatedSlug = slug.trim().toLowerCase().split(" ").join("-");
+	let hyphentatedSlug = '';
+	if (slug.includes(' ')) {
+		hyphentatedSlug = slug.trim().toLowerCase().split(' ').join('-');
 	} else {
 		hyphentatedSlug = slug.trim().toLowerCase();
 	}
