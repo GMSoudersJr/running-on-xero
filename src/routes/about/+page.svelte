@@ -7,25 +7,14 @@
   </title>
   <meta
     name="description"
-    content="A Blog by Gerald Souders about running in Xero Shoes with Affiliate Links included"
+    content="A Blog by Gerald Souders about running in Xero Shoes"
   >
 </svelte:head>
 <div class="page-container">
   <h1 class="title">
     About this site
   </h1>
-  <p class="disclaimer">
-  Disclaimer: I am a paid affiliate for Xero Shoes. I will be compensated if
-  you purchase shoes by clicking on links to Xero Shoes from this site.
-  </p>
-  <div class="banner">
-    <a href="https://xeroshoes.com/go/GMSoudersJr/bc40ab8e" target="_top">
-      <img
-        src="//xeroshoes.postaffiliatepro.com/accounts/default1/banners/bc40ab8e.jpg"
-        alt="" title="" width="250" height="250"
-      />
-    </a>
-  </div>
+
 </div>
 
 <style>
@@ -38,9 +27,6 @@
     justify-content: center;
   }
   .title {
-    justify-self: center;
-  }
-  .banner {
     justify-self: center;
   }
 </style>
