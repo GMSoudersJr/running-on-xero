@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { thisYear } from '$lib/utils.js';
+	import { thisYear } from '$lib/utils.js';
 
-  const copyrightString = `©${thisYear()} by Gerald M. Souders Jr.`
+	const copyrightString = `©${thisYear()} by Gerald M. Souders Jr.`;
 </script>
 
 <footer>
-  <p>{copyrightString}</p>
+	<p>{copyrightString}</p>
 </footer>
 
 <style>
-  footer {
-    box-sizing: border-box;
-    width: 100%;
-    text-align: center;
-    padding: 3px;
-    view-transition-name: footer;
-  }
+	footer {
+		box-sizing: border-box;
+		width: 100%;
+		text-align: center;
+		padding: 3px;
+		view-transition-name: footer;
+	}
 
-  footer p {
-    font-size: 16px;
-    line-height: 24px;
-  }
+	footer p {
+		font-size: 16px;
+		line-height: 24px;
+	}
 </style>

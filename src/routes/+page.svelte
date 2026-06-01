@@ -1,42 +1,40 @@
 <script lang="ts">
-  // TODO - add a carousel
-  import type { PageData } from "./$types";
-	import Carousel from "$lib/components/Carousel.svelte";
+	// TODO - add a carousel
+	import type { PageData } from './$types';
+	import Carousel from '$lib/components/Carousel.svelte';
 
-  interface Props {
-    data: PageData;
-  }
+	interface Props {
+		data: PageData;
+	}
 
-  let { data }: Props = $props();
-  let posts = $derived(data.posts ?? []);
+	let { data }: Props = $props();
+	let posts = $derived(data.posts ?? []);
 </script>
 
 <svelte:head>
-  <title>
-    Running on Xero
-  </title>
-  <meta
-    name="description"
-    content="A Blog about Running in Xero Shoes and the benefits of minimalist running by Gerald Souders"
-  >
+	<title>Running on Xero</title>
+	<meta
+		name="description"
+		content="A Blog about Running in Xero Shoes and the benefits of minimalist running by Gerald Souders"
+	/>
 </svelte:head>
 
 <div class="page-container">
-  <h1>Running on Xero</h1>
-  <Carousel {posts}/>
-  <p>It started with a little rubber!</p>
+	<h1>Running on Xero</h1>
+	<Carousel {posts} />
+	<p>It started with a little rubber!</p>
 </div>
 
 <style>
-  .page-container {
-    text-align: center;
-    height: 100%;
-    width: 100vw;
-  }
+	.page-container {
+		text-align: center;
+		height: 100%;
+		width: 100vw;
+	}
 
-  @media screen and (min-width: 40em) {
-    .page-container {
-      width: 600px;
-    }
-  }
+	@media screen and (min-width: 40em) {
+		.page-container {
+			width: 600px;
+		}
+	}
 </style>

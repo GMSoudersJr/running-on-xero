@@ -4,5 +4,5 @@ export const load: PageLoad = async ({ params, parent }) => {
 	const { posts } = await parent();
 	return {
 		posts
-	}
-}
+	};
+};
