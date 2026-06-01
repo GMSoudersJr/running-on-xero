@@ -37,6 +37,7 @@
           type="text"
           name="title"
           id="title"
+          placeholder="e.g. My First Race"
           value={form?.title ?? ''}
           required
         />
@@ -44,20 +45,24 @@
 
       <label for="content">
         Content
+        <small>The full body of the post, shown on the post page.</small>
         <textarea
           name="content"
           id="content"
           rows="7"
+          placeholder="Write your post here..."
           required
         >{form?.content ?? ''}</textarea>
       </label>
 
       <label for="imageUrl">
         Image URL
+        <small>Paste a direct link to the featured image (used in the blog card and at the top of the post).</small>
         <input
           type="url"
           name="imageUrl"
           id="imageUrl"
+          placeholder="https://..."
           value={imageUrl}
           oninput={(e) => {
             imageUrl = (e.target as HTMLInputElement).value;
@@ -82,20 +87,24 @@
 
       <label for="imageAlt">
         Image alt text
+        <small>Describes the image for screen readers and when the image fails to load.</small>
         <input
           type="text"
           name="imageAlt"
           id="imageAlt"
+          placeholder="e.g. A pair of Xero sandals on pavement"
           value={form?.imageAlt ?? ''}
         />
       </label>
 
       <label for="slug">
         Slug
+        <small>The URL path for this post — e.g. "my-first-race" becomes /blog/my-first-race.</small>
         <input
           type="text"
           name="slug"
           id="slug"
+          placeholder="e.g. my-first-race"
           value={form?.slug ?? ''}
           required
         />
@@ -103,10 +112,12 @@
 
       <label for="description">
         Description
+        <small>A one-sentence summary shown in the "Recent posts" sidebar and used for SEO meta tags.</small>
         <input
           type="text"
           name="description"
           id="description"
+          placeholder="e.g. A short take on why I switched to minimalist shoes."
           value={form?.description ?? ''}
         />
       </label>
@@ -170,6 +181,13 @@
     font-weight: 600;
     font-size: 0.9rem;
     color: #3C4142;
+  }
+
+  small {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.4;
   }
 
   input,
