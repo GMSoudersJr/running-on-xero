@@ -134,6 +134,12 @@
     padding: 2rem 1rem;
   }
 
+  @media screen and (min-width: 50em) {
+    .page {
+      min-width: 700px;
+    }
+  }
+
   .card {
     background: white;
     border: 1px solid #e0e0e0;

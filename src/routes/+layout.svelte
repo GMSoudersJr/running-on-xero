@@ -153,7 +153,8 @@
       "footer footer footer";
     }
     main {
-      place-self: start stretch;
+      place-self: start;
+      justify-self: center;
     }
     aside {
       place-self: start;
